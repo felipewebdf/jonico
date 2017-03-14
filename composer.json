@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "zendframework/zendframework": "2.5.2",
+        "zendframework/zendframework": "^2.5.2",
         "doctrine/doctrine-orm-module": "^1.1"
     },
     "license": "MIT",
