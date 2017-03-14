@@ -1,0 +1,30 @@
+{
+    "name": "zeusmaster/jonico",
+    "description": "lib apigility + zf2 + doctrine 2",
+    "type": "library",
+    "keywords": [
+        "zf2",
+        "apigility",
+        "base"
+    ],
+    "authors": [
+        {
+            "name": "felipe.silva",
+            "email": "felipegunsf@gmail.com"
+        }
+    ],
+    "require": {
+        "zendframework/zendframework": "2.5.2",
+        "doctrine/doctrine-orm-module": "0.9.1"
+    },
+    "require-dev": {
+        "zendframework/zftool": "dev-master",
+        "zendframework/zend-developer-tools": "dev-master",
+        "zfcampus/zf-apigility-admin": "1.3.1",
+        "phpunit/phpunit": "5.2.12",
+        "phpunit/phpunit-skeleton-generator": "2.0.1"
+    },
+    "license": "BSD-3-Clause",
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
