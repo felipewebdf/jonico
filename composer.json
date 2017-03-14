@@ -25,6 +25,5 @@
         "phpunit/phpunit-skeleton-generator": "2.0.1"
     },
     "license": "BSD-3-Clause",
-    "minimum-stability": "dev",
     "prefer-stable": true
 }
