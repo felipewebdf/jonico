@@ -18,8 +18,9 @@ class Bootstrap
 
     public static function init()
     {
-        if (is_readable(dirname(__DIR__) . '/../../../config/application.config.php')) {
-            $testConfig = include dirname(__DIR__) . '/../../../config/application.config.php';
+        $applicationConfig = '/../../../../../config/application.config.php';
+        if (is_readable(dirname(__DIR__) . $applicationConfig)) {
+            $testConfig = include dirname(__DIR__) . $applicationConfig;
         } else {
             throw new \Exception('The file application.config.php doesn\'t exists!');
         }
