@@ -23,4 +23,12 @@ class AbstractService
     {
         $this->em = $em;
     }
+    /**
+     * Persist entity
+     */
+    protected function persist($entity)
+    {
+        $this->em->persist($entity);
+        $this->em->flush();
+    }
 }
