@@ -2,6 +2,7 @@
 namespace Jonico\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Zend\ServiceManager\ServiceManager;
 
 /**
  * Description of AbstractService
@@ -17,6 +18,12 @@ class AbstractService
     protected $em;
     /**
      *
+     * @var ServiceManager
+     */
+    protected $sm;
+    protected $services;
+    /**
+     *
      * @param EntityManagerInterface $em
      */
     public function __construct(EntityManagerInterface $em)
@@ -30,5 +37,33 @@ class AbstractService
     {
         $this->em->persist($entity);
         $this->em->flush();
+    }
+    /**
+     * Setar Service manager
+     * @param ServiceManager $sm
+     */
+    public function setServiceManager(ServiceManager $sm)
+    {
+        $this->sm = $sm;
+    }
+    /**
+     * Retornar instancia service manager
+     * @return ServiceManager
+     */
+    public function getServiceManager()
+    {
+        return $this->sm;
+    }
+    /**
+     * Retornar o servico solicitado
+     * @param string $name
+     * @return mixed
+     */
+    public function getService($name)
+    {
+        if (!isset($this->services[$name])) {
+            $this->services[$name] = $this->getServiceManager()->get($name);
+        }
+        return $this->services[$name];
     }
 }
