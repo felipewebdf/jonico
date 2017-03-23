@@ -3,6 +3,8 @@ namespace Jonico\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Zend\ServiceManager\ServiceManager;
+use Jonico\Validate\AbstractValidate;
+use Jonico\Exception\ValidateException;
 
 /**
  * Description of AbstractService
@@ -22,6 +24,11 @@ class AbstractService
      */
     protected $sm;
     protected $services;
+    /**
+     *
+     * @var AbstractValidate
+     */
+    protected $validate;
     /**
      *
      * @param EntityManagerInterface $em
@@ -65,5 +72,25 @@ class AbstractService
             $this->services[$name] = $this->getServiceManager()->get($name);
         }
         return $this->services[$name];
+    }
+    /**
+     *
+     * @param AbstractValidate $validate
+     */
+    public function setValidate(AbstractValidate $validate)
+    {
+        $this->validate = $validate;
+    }
+    /**
+     * Launch exception
+     * @param string $inputName
+     * @param string $message
+     * @param integer $code
+     * @throws ValidateException
+     */
+    protected function validateException($inputName, $message, $code=422)
+    {
+        $json = json_encode(['validation_messages' => [$inputName => [$message]]], true);
+        throw new ValidateException($json, $code);
     }
 }
