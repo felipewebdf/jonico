@@ -98,7 +98,7 @@ class AbstractValidate
         foreach($this->inputs as $input) {
             $inputFilter->add($input);
         }
-        $inputFilter->setData($objParams);
+        $inputFilter->setData((array)$objParams);
         return $inputFilter;
     }
     /**
