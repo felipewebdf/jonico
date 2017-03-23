@@ -89,29 +89,29 @@ class AbstractValidate
     }
     /**
      * Populate input filters params and validators
-     * @param array $arrParams
+     * @param stdClass $objParams
      * @return InputFilter
      */
-    protected function populateInputFilter($arrParams)
+    protected function populateInputFilter($objParams)
     {
         $inputFilter = new InputFilter();
         foreach($this->inputs as $input) {
             $inputFilter->add($input);
         }
-        $inputFilter->setData((array)$arrParams);
+        $inputFilter->setData($objParams);
         return $inputFilter;
     }
     /**
      *
-     * @param array $arrParams
+     * @param stdClass $objParams
      * @return boolean
      */
-    public function isValid($arrParams)
+    public function isValid($objParams)
     {
-        foreach($arrParams as $inputName=>$value) {
+        foreach($objParams as $inputName=>$value) {
             $this->addInputValidator($inputName);
         }
-        $inputFilter = $this->populateInputFilter((array)$arrParams);
+        $inputFilter = $this->populateInputFilter($objParams);
         if ($inputFilter->isValid()) {
             return true;
         }
