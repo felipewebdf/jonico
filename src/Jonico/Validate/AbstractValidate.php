@@ -37,6 +37,13 @@ class AbstractValidate
         $this->translator = new TranslatorValidator($translator);
     }
 
+    public function reset()
+    {
+        $this->validators = [];
+        $this->inputs = [];
+        $this->messages = [];
+    }
+
     /**
      * @param string $inputName
      */
